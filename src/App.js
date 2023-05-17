@@ -1,11 +1,7 @@
-import './App.css';
-
-function App() {
+function Board() {
     return (
-        <div className="App">
-
-        </div>
+        <button className="square">X</button>
     );
 }
 
-export default App;
+export default Board;
