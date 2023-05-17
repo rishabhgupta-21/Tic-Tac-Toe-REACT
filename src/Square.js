@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-const Square = ({ value }) => {
+const Square = ({ value, handleClick }) => {
     // Return HTML
     return (
         <button className='square' onClick={handleClick}>
