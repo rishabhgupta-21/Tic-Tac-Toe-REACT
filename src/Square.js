@@ -1,14 +1,6 @@
 import { useState } from "react";
 
-const Square = () => {
-    // State
-    const [value, setValue] = useState(null);
-
-    // Click Event Handler
-    const handleClick = () => {
-        setValue('X');
-    }
-
+const Square = ({ value }) => {
     // Return HTML
     return (
         <button className='square' onClick={handleClick}>
