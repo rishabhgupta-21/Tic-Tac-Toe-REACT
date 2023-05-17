@@ -25,6 +25,17 @@ function Board() {
     // Return HTML
     return (
         <>
+            {/* Logic for Displaying Game Winner / Next Turn */}
+            {calculateWinner(squares) ? (
+                <div className="status">
+                    Winner: {calculateWinner(squares)}
+                </div>
+            ) : (
+                <div className="status">
+                    Next player: {xIsNext ? <>X</> : <>Y</>}
+                </div>
+            )}
+
             <div className='board-row'>
                 <Square value={squares[0]} onSquareClick={() => {
                     handleClick(0);
