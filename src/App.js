@@ -14,9 +14,6 @@ const Board = ({ xIsNext, squares, onPlay }) => {
 
         xIsNext ? nextSquares[i] = 'X' : nextSquares[i] = 'O';
 
-        // setXIsNext(!xIsNext);
-        // setSquares(newSquares);
-
         onPlay(nextSquares);
     }
 
@@ -77,16 +74,43 @@ const Board = ({ xIsNext, squares, onPlay }) => {
 const Game = () => {
     // States
     const [xIsNext, setXIsNext] = useState(true);   // first move will be X
-    const [history, setHistory] = useState([Array(9).full(null)])
+    const [history, setHistory] = useState([Array(9).fill(null)]);
 
     // Variables
     const currentSquares = history[history.length - 1];
+
+    // Variable - Array of React Elements
+    const moves = history.map((squares, move) => {
+        let text = '';
+
+        if (move === 0) {
+            text = 'Go to game start';
+        }
+        else {
+            text = `Go to move #${move}`;
+        }
+
+        return (
+            <li key={move}>
+                <button onClick={() => jumpTo(move)}>
+                    {text}
+                </button>
+            </li>
+        )
+    })
+
+    // console.log(moves);
 
     // Functions
     const handlePlay = (nextSquares) => {
         setXIsNext(!xIsNext);
         setHistory([...history, nextSquares]);
     }
+
+    const jumpTo = (nextMove) => {
+        // Something
+    }
+
 
     // Return HTML
     return (
@@ -96,7 +120,7 @@ const Game = () => {
             </div>
 
             <div className="game-info">
-                <ol>{/* something */}</ol>
+                <ol>{moves}</ol>
             </div>
         </div>
     );
